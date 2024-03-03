@@ -1,0 +1,3 @@
+[submodule "elliptic-curves-over-finite-fields"]
+	path = elliptic-curves-over-finite-fields
+	url = https://github.com/ObjectiveAxioma/elliptic-curves-over-finite-fields
