@@ -1,1 +1,1 @@
-../elliptic-curves-over-finite-fields/ecFiniteField.py
+elliptic-curves-over-finite-fields/ecFiniteField.py
