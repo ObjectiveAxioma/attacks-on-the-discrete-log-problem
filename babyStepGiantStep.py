@@ -4,15 +4,18 @@ def babyStepGiantStep(curve, P, Q):
     if not isinstance(curve, EllipticCurve) or not isinstance(P, Point) or not isinstance(Q, Point):
         return "Please pass an EllipticCurve and two Point objects."
 
+    # Get an integer with a value greater than q**(1/2).
     N = curve.orderOfCurve()
-    m = int(N**(1/2) + 1)
+    m = int(curve.q**(1/2) + 1)
 
+    # Find all values of jP for 0 <= j < m.
     i = 0
     iP = []
     while i < m:
         iP.append(i*P)
         i+=1
 
+    # Compute Q - jmP for all 0 <= j < m and check if there is a match.
     j = 0
     isMatch = 0
     while j < m and isMatch == 0:
@@ -24,14 +27,7 @@ def babyStepGiantStep(curve, P, Q):
             i+=1
         j+=1
 
+    # Compute and return i + j*m when there is a match.
     k = ((i-1) + (j-1)*m) % N
 
     return k
-
-#### Current testing code ####
-curve = EllipticCurve(5, 5, 1, 1)
-P = Point(0, 1, curve)
-Q = Point(4, 2, curve)
-
-k = babyStepGiantStep(curve, P, Q)
-print("Q = kP" + "\nk = " + str(k))
